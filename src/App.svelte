@@ -19,7 +19,7 @@
 
 <Modal
  message="Hey, I am a prop value"
- {isPromo}
+ {isPromo} 
  {showModal}
  on:click={toggleModal}
 />
