@@ -9,11 +9,23 @@
   people = people.filter((d) => d != person);
  };
  const num = 3;
+ let showModal = false;
+ let isPromo = true;
+
+ const toggleModal = () => {
+  showModal = !showModal;
+ };
 </script>
 
-<Modal />
+<Modal
+ message="Hey, I am a prop value"
+ {isPromo}
+ {showModal}
+ on:click={toggleModal}
+/>
 
 <main>
+ <button on:click={toggleModal}> Open Modal </button>
  {#each people as person (person.id)}
   <div>
    <h4>{person.name}</h4>
