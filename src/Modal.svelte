@@ -1,14 +1,13 @@
 <script>
- export let message = "Default";
  export let isPromo = false;
  export let showModal = false;
  //  export let onModalToggle = () => {};
 </script>
 
 {#if showModal}
- <div class="backdrop" class:promo={isPromo} on:click >
+ <div class="backdrop" class:promo={isPromo} on:click|self>
   <div class="modal">
-   <p>{message}</p>
+   <slot />
   </div>
  </div>
 {/if}
@@ -32,6 +31,6 @@
 
  .promo .modal {
   background: crimson;
-  color: white; 
+  color: white;
  }
 </style>

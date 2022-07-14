@@ -1,5 +1,7 @@
 <script>
  import Modal from "./Modal.svelte";
+ import AddPersonForm from "./AddPersonForm.svelte";
+
  let people = [
   {name: "yoshi", beltColor: "black", age: 25, id: 1},
   {name: "mario", beltColor: "orange", age: 45, id: 2},
@@ -8,21 +10,24 @@
  const handleClick = (person) => {
   people = people.filter((d) => d != person);
  };
- const num = 3;
- let showModal = false;
+
+ let showModal = true;
  let isPromo = true;
 
  const toggleModal = () => {
   showModal = !showModal;
  };
+
+ const addPerson = (e) => {
+    const person = e.detail;
+    people = [...people, person];
+    showModal = false;
+ };
 </script>
 
-<Modal
- message="Hey, I am a prop value"
- {isPromo} 
- {showModal}
- on:click={toggleModal}
-/>
+<Modal {isPromo} {showModal} on:click={toggleModal}>
+ <AddPersonForm on:addPerson={addPerson} />
+</Modal>
 
 <main>
  <button on:click={toggleModal}> Open Modal </button>
